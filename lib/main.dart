@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import './widgets/calculator_form.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:sl_post_air_mail_calculator/providers/rate_provider.dart';
+
+import 'screens/home_page.dart';
+import 'providers/country_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,32 +17,29 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xFFCF1839),
-        accentColor: Color(0xFFFFC00F),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: FittedBox(
-          child: const Text('SL Post Foreign Airmail Calculator'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => CountryProvider()..loadCountries(),
+          lazy: true,
         ),
-        centerTitle: true,
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: CalculatorForm(),
+        ChangeNotifierProvider(
+          create: (context) => RateProvider(),
+          lazy: true,
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          colorSchemeSeed: Colors.red,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          useMaterial3: true,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xFFCF1839),
+            foregroundColor: Colors.white,
+          ),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class CalculatorForm extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class _CalculatorFormState extends State<CalculatorForm> {
   final _weightController = TextEditingController();
   var _zoneController;
 
-  String _validateWeight(String value) {
+  String? _validateWeight(String value) {
     if (value.isEmpty) {
       return "Weight cannot be empty";
     } else {
@@ -30,11 +29,11 @@ class _CalculatorFormState extends State<CalculatorForm> {
     super.dispose();
   }
 
-  Future<void> _calculate(BuildContext context) {
+  Future<void>? _calculate(BuildContext context) {
     if (_key.currentState?.validate() ?? false) {
-      double shippingCost({double initialWeight, rates}) {
+      double shippingCost({required double initialWeight, rates}) {
         var price =
-            ((double.tryParse(_weightController.text) - initialWeight) / 10);
+            ((double.tryParse(_weightController.text)! - initialWeight) / 10);
         switch (_zoneController) {
           case "A":
             return rates[0][0] + price * rates[0][1];
@@ -122,7 +121,7 @@ class _CalculatorFormState extends State<CalculatorForm> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  _key.currentState.reset();
+                  _key.currentState!.reset();
                   _weightController.clear();
                   Navigator.of(ctx).pop();
                 },
@@ -147,6 +146,15 @@ class _CalculatorFormState extends State<CalculatorForm> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: const InputDecoration(
+              hintText: "Weight (g)",
+            ),
+            keyboardType: TextInputType.number,
+            controller: _weightController,
+            autofocus: false,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -178,16 +186,6 @@ class _CalculatorFormState extends State<CalculatorForm> {
               });
             },
           ),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            decoration: const InputDecoration(
-              hintText: "Weight (g)",
-            ),
-            keyboardType: TextInputType.number,
-            validator: _validateWeight,
-            controller: _weightController,
-            autofocus: false,
-          ),
           DropdownButtonFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             hint: const Text('Select Zone'),
@@ -209,29 +207,20 @@ class _CalculatorFormState extends State<CalculatorForm> {
             ),
             onPressed: () => _calculate(context),
           ),
-          TextButton(
-            onPressed: () {
-              launch("https://slpost.gov.lk/tariff/");
-            },
-            child: const Text(
-              'Based on Foreign Postage Rates With Effect From 1st of January, 2018.',
-              textAlign: TextAlign.center,
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text('Developed By:'),
               TextButton(
                 child: const Text(
-                  'WITSBERRY (PVT) LTD.',
+                  'Witsberry (Pvt) Ltd',
                   style: TextStyle(
                     color: Color(0xFFC0001E),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 onPressed: () {
-                  launch("https://www.witsberry.com");
+                  launchUrlString("https://www.witsberry.com");
                 },
               ),
             ],
