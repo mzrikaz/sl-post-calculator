@@ -12,6 +12,8 @@ class CountryProvider extends ChangeNotifier {
 
   Map<String, dynamic> _localMail = {
     "letter": 0,
+    "parcel": 0,
+    "courier": 0,
   };
 
   Map<String, dynamic> _airMail = {
@@ -19,6 +21,20 @@ class CountryProvider extends ChangeNotifier {
     "u_packets": 0,
     "printed": 0,
   };
+
+  void reset() {
+    _localMail = {
+      "letter": 0,
+      "parcel": 0,
+      "courier": 0,
+    };
+    _airMail = {
+      "letter": 0,
+      "u_packets": 0,
+      "printed": 0,
+    };
+    notifyListeners();
+  }
 
   int get selectedCountry {
     return _selected;
@@ -65,7 +81,9 @@ class CountryProvider extends ChangeNotifier {
     print("jo");
 
     _localMail = {
-      "letter": getLocalRate(weight),
+      "letter": getLocalLetterRate(weight),
+      "parcel": getLocalParcelRate(weight),
+      "courier": getLocalCourierRate(weight),
     };
 
     _airMail = {

@@ -12,20 +12,17 @@ class Cod extends StatelessWidget {
       children: [
         PostageTile(
           name: "Letter",
-          subtitle: "Registered 110.00 | *Max 2Kg",
           price: 60,
           maxWeight: 2,
           registered: "Registered 0.00",
         ),
         PostageTile(
           name: "Printed",
-          subtitle: "Registered 110.00",
           price: 60,
           maxWeight: 40,
         ),
         PostageTile(
           name: "Small Packet",
-          subtitle: "Registered 110.00",
           price: 60,
           maxWeight: 40,
         ),

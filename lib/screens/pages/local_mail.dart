@@ -15,44 +15,38 @@ class LocalMail extends StatelessWidget {
         children: [
           PostageTile(
             name: "Letter",
-            subtitle: "Registered 110.00 | *Max 2Kg",
             price: provider.localMail['letter'],
             maxWeight: 2,
-            registered: "Registered 0.00",
+            registered:
+                "Registered ${provider.localMail['letter'] + (provider.localMail['letter'] != 0 ? 60 : 0)} LKR",
           ),
           PostageTile(
             name: "SL Post Courier",
-            subtitle: "Registered 110.00",
-            price: 60,
+            price: provider.localMail['courier'],
             maxWeight: 40,
           ),
           PostageTile(
             name: "Parcel",
-            subtitle: "Registered 110.00",
-            price: 60,
-            maxWeight: 40,
+            price: provider.localMail['parcel'],
+            maxWeight: 20,
           ),
           PostageTile(
             name: "On State Service",
-            subtitle: "Registered 110.00",
             price: 60,
             maxWeight: 40,
           ),
           PostageTile(
             name: "Open Article",
-            subtitle: "Registered 110.00",
             price: 60,
             maxWeight: 40,
           ),
           PostageTile(
             name: "NewsPaper",
-            subtitle: "Registered 110.00",
             price: 60,
             maxWeight: 40,
           ),
           PostageTile(
             name: "Basket & Bag",
-            subtitle: "Registered 110.00",
             price: 60,
             maxWeight: 40,
           ),

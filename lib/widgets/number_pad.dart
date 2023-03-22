@@ -48,6 +48,8 @@ class _NumberPadState extends State<NumberPad> {
     setState(() {
       _initialValue = "0";
     });
+    final provider = Provider.of<CountryProvider>(context, listen: false);
+    provider.reset();
   }
 
   @override

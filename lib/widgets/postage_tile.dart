@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 class PostageTile extends StatelessWidget {
   const PostageTile({
     required this.name,
-    required this.subtitle,
     required this.price,
     this.registered = "",
     required this.maxWeight,
   });
-  final String name, subtitle, registered;
+  final String name, registered;
   final int maxWeight;
   final int price;
 
