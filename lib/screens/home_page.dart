@@ -26,7 +26,23 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: FittedBox(
-          child: const Text('SL Postage'),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'SL Post Calculator',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextSpan(
+                  text: "v2.0",
+                  style: TextStyle(fontSize: 9),
+                ),
+              ],
+            ),
+          ),
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(240),
@@ -35,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             child: NumberPad(),
           ),
         ),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
           CountrySelector(),
         ],

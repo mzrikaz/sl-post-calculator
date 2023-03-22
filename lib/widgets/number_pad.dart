@@ -60,7 +60,7 @@ class _NumberPadState extends State<NumberPad> {
           "${_initialValue}g",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 40,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),

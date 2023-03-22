@@ -78,7 +78,6 @@ class CountryProvider extends ChangeNotifier {
   void calculate(int weight) {
     _weight = weight;
     final zone = zones[_countries[_selected].zone];
-    print("jo");
 
     _localMail = {
       "letter": getLocalLetterRate(weight),
