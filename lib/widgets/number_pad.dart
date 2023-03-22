@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sl_post_air_mail_calculator/providers/country_provider.dart';
 
 class NumberPad extends StatefulWidget {
   const NumberPad({
@@ -14,14 +16,14 @@ class _NumberPadState extends State<NumberPad> {
 
   void addDigit(String digit) {
     setState(() {
-      if (_initialValue.length <= 7) {
+      if (_initialValue.length <= 4) {
         if (_initialValue == "0") {
           _initialValue = digit;
         } else {
           _initialValue += digit;
         }
+        calculate(int.parse(_initialValue));
       }
-      print(_initialValue);
     });
   }
 
@@ -32,7 +34,14 @@ class _NumberPadState extends State<NumberPad> {
       } else {
         _initialValue = _initialValue.substring(0, _initialValue.length - 1);
       }
+
+      calculate(int.parse(_initialValue));
     });
+  }
+
+  void calculate(int weight) {
+    final provider = Provider.of<CountryProvider>(context, listen: false);
+    provider.calculate(weight);
   }
 
   void clear() {

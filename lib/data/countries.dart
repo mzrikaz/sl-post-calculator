@@ -1189,12 +1189,6 @@ List<Map<String, dynamic>> countriesData = [
   },
   {
     "properties": {
-      "name": "Sri Lanka",
-      "zone": 8,
-    },
-  },
-  {
-    "properties": {
       "name": "St. Christopher (St. Kitts) & Nevis",
       "zone": 7,
     },

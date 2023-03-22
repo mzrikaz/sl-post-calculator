@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sl_post_air_mail_calculator/screens/cod.dart';
 
 import '../widgets/country_selector.dart';
 import '../widgets/number_pad.dart';
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
       ),
       extendBodyBehindAppBar: true,
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: _changeIndex,
         items: [
@@ -64,6 +66,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.safety_check),
             label: "Sea Mail",
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.safety_check),
+            label: "COD",
+          ),
         ],
       ),
       body: Container(
@@ -78,6 +84,7 @@ class _HomePageState extends State<HomePage> {
             LocalMail(),
             AirMail(),
             SeaMail(),
+            Cod(),
           ],
         ),
       ),

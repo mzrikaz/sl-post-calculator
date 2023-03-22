@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sl_post_air_mail_calculator/providers/rate_provider.dart';
 
 import 'screens/home_page.dart';
 import 'providers/country_provider.dart';
@@ -21,10 +20,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => CountryProvider()..loadCountries(),
-          lazy: true,
-        ),
-        ChangeNotifierProvider(
-          create: (context) => RateProvider(),
           lazy: true,
         ),
       ],

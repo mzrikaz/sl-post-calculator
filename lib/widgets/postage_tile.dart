@@ -10,7 +10,7 @@ class PostageTile extends StatelessWidget {
   });
   final String name, subtitle, registered;
   final int maxWeight;
-  final double price;
+  final int price;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class PostageTile extends StatelessWidget {
           style: TextStyle(fontSize: 11),
         ),
         trailing: Text(
-          "${price.toStringAsFixed(2)} LKR",
+          "$price LKR",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
