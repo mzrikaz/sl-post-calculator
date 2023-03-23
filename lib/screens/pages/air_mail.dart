@@ -22,17 +22,17 @@ class AirMail extends StatelessWidget {
           PostageTile(
             name: "U Packet",
             price: provider.airMail['u_packets'],
-            maxWeight: 40,
+            maxWeight: 2,
           ),
-          PostageTile(
-            name: "EMS",
-            price: 60,
-            maxWeight: 40,
-          ),
+          // PostageTile(
+          //   name: "EMS",
+          //   price: 60,
+          //   maxWeight: 40,
+          // ),
           PostageTile(
             name: "Printed Matters",
             price: provider.airMail['printed'],
-            maxWeight: 40,
+            maxWeight: 2,
           ),
           PostageTile(
             name: "Parcels",

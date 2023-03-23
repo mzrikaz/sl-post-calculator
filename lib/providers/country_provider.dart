@@ -115,7 +115,7 @@ class CountryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int getRate(int weight, int basePrice, int additionaPrice, int baseWeight,
+  int getRate(int weight, int basePrice, int additionalPrice, int baseWeight,
       int additionalWeight, int max) {
     if (weight <= 0 || weight > max) {
       return 0;
@@ -124,7 +124,7 @@ class CountryProvider extends ChangeNotifier {
     } else {
       int newWeight = weight - baseWeight;
       int newWeightTime = (newWeight / additionalWeight).ceil();
-      return basePrice + (newWeightTime * additionaPrice);
+      return basePrice + (newWeightTime * additionalPrice);
     }
   }
 }
