@@ -14,6 +14,7 @@ class CountryProvider extends ChangeNotifier {
     "letter": 0,
     "parcel": 0,
     "courier": 0,
+    "newspaper": 0,
   };
 
   Map<String, dynamic> _airMail = {
@@ -27,6 +28,7 @@ class CountryProvider extends ChangeNotifier {
       "letter": 0,
       "parcel": 0,
       "courier": 0,
+      "newspaper": 0,
     };
     _airMail = {
       "letter": 0,
@@ -83,6 +85,7 @@ class CountryProvider extends ChangeNotifier {
       "letter": getLocalLetterRate(weight),
       "parcel": getLocalParcelRate(weight),
       "courier": getLocalCourierRate(weight),
+      "newspaper": getLocalNewspaperRate(weight),
     };
 
     _airMail = {

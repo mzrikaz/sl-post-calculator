@@ -42,8 +42,8 @@ class LocalMail extends StatelessWidget {
           ),
           PostageTile(
             name: "NewsPaper",
-            price: 60,
-            maxWeight: 40,
+            price: provider.localMail['newspaper'],
+            maxWeight: 1,
           ),
           PostageTile(
             name: "Basket & Bag",

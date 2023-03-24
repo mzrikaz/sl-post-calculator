@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sl_post_air_mail_calculator/screens/cod.dart';
 
 import '../widgets/country_selector.dart';
 import '../widgets/number_pad.dart';
 import 'pages/air_mail.dart';
 import 'pages/local_mail.dart';
 import 'pages/sea_mail.dart';
+import 'pages/cod.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             LocalMail(),
             AirMail(),
             SeaMail(),
-            Cod(),
+            CodMail(),
           ],
         ),
       ),

@@ -89,3 +89,28 @@ int getLocalParcelRate(int weight) {
 
   return price;
 }
+
+int getLocalNewspaperRate(int weight) {
+  Map<String, dynamic> localRates = {
+    "max": 1000,
+    "base_weight": 60,
+    "base_rate": 20,
+  };
+  int price = 0;
+
+  if (weight <= 60 && weight > 0) {
+    price = localRates["base_rate"];
+  } else if (weight > localRates["base_weight"] && weight <= 120) {
+    price = 30;
+  } else if (weight > 120 && weight <= 960) {
+    price = 30; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - 120}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 120).ceil() * 10;
+  } else if (weight > 960 && weight <= localRates["max"]) {
+    price = 110; // Add base rate for this price range to 520
+  }
+
+  return price;
+}

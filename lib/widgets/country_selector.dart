@@ -73,10 +73,14 @@ class _CountrySelectorState extends State<CountrySelector> {
           ),
         );
       },
-      icon: Icon(Icons.pin_drop),
+      icon: Icon(
+        Icons.pin_drop,
+        color: Colors.white,
+      ),
       label: Consumer<CountryProvider>(builder: (context, provider, ch) {
         return Text(
           provider.countries[provider.selectedCountry].name,
+          style: TextStyle(color: Colors.white),
         );
       }),
     );

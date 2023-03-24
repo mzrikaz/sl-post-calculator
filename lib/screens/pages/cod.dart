@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sl_post_air_mail_calculator/widgets/postage_tile.dart';
 
-class Cod extends StatelessWidget {
-  const Cod({
+class CodMail extends StatelessWidget {
+  const CodMail({
     super.key,
   });
 
