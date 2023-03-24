@@ -114,3 +114,91 @@ int getLocalNewspaperRate(int weight) {
 
   return price;
 }
+
+int getLocalOpenArticleRate(int weight) {
+  Map<String, dynamic> localRates = {
+    "max": 2000,
+    "base_weight": 30,
+    "base_rate": 30,
+  };
+  int price = 0;
+
+  if (weight <= 30 && weight > 0) {
+    price = localRates["base_rate"];
+  } else if (weight > localRates["base_weight"] && weight <= 960) {
+    price = 30; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - localRates["base_weight"]}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 30).ceil() * 5;
+  } else if (weight > 960 && weight <= 1000) {
+    price = 250; // Add base rate for this price range to 520
+  } else if (weight > 1000 && weight <= localRates["max"]) {
+    price = 250; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - 1000}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 500).ceil() * 50;
+  }
+
+  return price;
+}
+
+int getLocalOnStateRate(int weight) {
+  Map<String, dynamic> localRates = {
+    "max": 5000,
+    "base_weight": 20,
+    "base_rate": 110,
+  };
+  int price = 0;
+
+  if (weight <= 20 && weight > 0) {
+    price = localRates["base_rate"];
+  } else if (weight > localRates["base_weight"] && weight <= 100) {
+    price = localRates["base_rate"];
+    ; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - localRates["base_weight"]}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 10).ceil() * 10;
+  } else if (weight > 100 && weight <= 1000) {
+    price = 190; // Add base rate for this price range to 520
+    int additionalWeight = int.parse("${weight - 100}");
+    price += (additionalWeight / 50).ceil() * 20;
+  } else if (weight > 1000 && weight <= 2000) {
+    price = 550; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - 1000}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 250).ceil() * 30;
+  } else if (weight > 2000 && weight <= localRates["max"]) {
+    price = 670; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - 2000}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 1000).ceil() * 50;
+  }
+
+  return price;
+}
+
+int getLocalBasketRate(int weight) {
+  Map<String, dynamic> localRates = {
+    "max": 20000,
+    "base_weight": 10000,
+    "base_rate": 300,
+  };
+  int price = 0;
+
+  if (weight <= 10000 && weight > 0) {
+    price = localRates["base_rate"];
+  } else if (weight > localRates["base_rate"] && weight <= localRates["max"]) {
+    price = 300; // Add base rate for this price range to 130
+    int additionalWeight = int.parse("${weight - localRates["base_weight"]}");
+    // Here 50 is how much difference of grams between every price
+    // 20 means how much rupee per 50 gram
+    price += (additionalWeight / 1000).ceil() * 50;
+  }
+
+  return price;
+}

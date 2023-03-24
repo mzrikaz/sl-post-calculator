@@ -31,14 +31,14 @@ class LocalMail extends StatelessWidget {
             maxWeight: 20,
           ),
           PostageTile(
-            name: "On State Service",
-            price: 60,
-            maxWeight: 40,
+            name: "Open Article",
+            price: provider.localMail['open_article'],
+            maxWeight: 2,
           ),
           PostageTile(
-            name: "Open Article",
-            price: 60,
-            maxWeight: 40,
+            name: "Basket & Bag",
+            price: provider.localMail['basket'],
+            maxWeight: 20,
           ),
           PostageTile(
             name: "NewsPaper",
@@ -46,9 +46,9 @@ class LocalMail extends StatelessWidget {
             maxWeight: 1,
           ),
           PostageTile(
-            name: "Basket & Bag",
-            price: 60,
-            maxWeight: 40,
+            name: "On State Service",
+            price: provider.localMail['on_state'],
+            maxWeight: 5,
           ),
         ],
       );
